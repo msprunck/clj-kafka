@@ -10,6 +10,11 @@
   [m]
   (Producer. (ProducerConfig. (as-properties m))))
 
+(defn close
+  "Close the connection to Zookeeper and all Kafka brokers."
+  [^Producer producer]
+  (.close producer))
+
 (defn message
   ([topic value] (message topic nil value))
   ([topic key value] (KeyedMessage. topic key value)))
